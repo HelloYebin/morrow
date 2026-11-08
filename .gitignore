@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# React Native
+.metro-health-check*
+
+# iOS
+frontend/ios/Pods/
+frontend/ios/build/
+frontend/ios/DerivedData/
+frontend/ios/xcuserdata/
+*.xcuserstate
+
+# Android
+frontend/android/.gradle/
+frontend/android/build/
+frontend/android/app/build/
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+
+frontend/android/app/debug.keystore
+frontend/ios/.xcode.env
