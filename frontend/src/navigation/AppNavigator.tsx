@@ -19,25 +19,40 @@ export type RootStackParamList = {
   ForgotPassword: undefined;
 };
 
+type AppNavigatorProps = {
+  isLoggedIn: boolean;
+};
+
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-export default function AppNavigator() {
+export default function AppNavigator({ isLoggedIn }: AppNavigatorProps) {
   return (
     <Stack.Navigator
-      initialRouteName="AuthWelcome"
+      key={isLoggedIn ? 'user' : 'guest'}
+      initialRouteName={isLoggedIn ? 'Welcome' : 'AuthWelcome'}
       screenOptions={{
         headerShown: false,
         gestureEnabled: true,
         animation: 'slide_from_right',
       }}
     >
-      <Stack.Screen name="AuthWelcome" component={AuthWelcomeScreen} />
-      <Stack.Screen name="Welcome" component={WelcomeScreen} />
-      <Stack.Screen name="PersonalSetup" component={PersonalSetupScreen} />
-      <Stack.Screen name="SharedSetup" component={SharedSetupScreen} />
-      <Stack.Screen name="SignUp" component={SignUpScreen} />
-      <Stack.Screen name="Login" component={LoginScreen} />
-      <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
+      {isLoggedIn ? (
+        <>
+          <Stack.Screen name="Welcome" component={WelcomeScreen} />
+          <Stack.Screen name="PersonalSetup" component={PersonalSetupScreen} />
+          <Stack.Screen name="SharedSetup" component={SharedSetupScreen} />
+        </>
+      ) : (
+        <>
+          <Stack.Screen name="AuthWelcome" component={AuthWelcomeScreen} />
+          <Stack.Screen name="SignUp" component={SignUpScreen} />
+          <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen
+            name="ForgotPassword"
+            component={ForgotPasswordScreen}
+          />
+        </>
+      )}
     </Stack.Navigator>
   );
 }

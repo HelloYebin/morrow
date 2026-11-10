@@ -53,6 +53,7 @@ export default function SignUpScreen({ navigation }: Props) {
         email: email.trim(),
         password,
         options: {
+          emailRedirectTo: 'morrow://auth/callback',
           data: {
             nickname: nickname.trim() || null,
           },
