@@ -7,9 +7,11 @@ import {
   StatusBar,
   Pressable,
   Modal,
+  Alert,
 } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/AppNavigator';
+import { supabase } from '../lib/supabase';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Welcome'>;
 type SpaceType = 'personal' | 'shared';
@@ -28,6 +30,26 @@ export default function WelcomeScreen({ navigation }: Props) {
     }
   };
 
+  const handleLogout = () => {
+    Alert.alert('Log out', 'Are you sure you want to log out?', [
+      {
+        text: 'Cancel',
+        style: 'cancel',
+      },
+      {
+        text: 'Log out',
+        style: 'destructive',
+        onPress: async () => {
+          const { error } = await supabase.auth.signOut();
+
+          if (error) {
+            Alert.alert('Logout failed', error.message);
+          }
+        },
+      },
+    ]);
+  };
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <StatusBar barStyle="dark-content" />
@@ -40,8 +62,8 @@ export default function WelcomeScreen({ navigation }: Props) {
         {/* Header */}
         <View style={styles.header}>
           <Text style={styles.logo}>morrow.</Text>
-          <Pressable onPress={() => console.log('Settings')}>
-            <Text style={styles.settings}>⚙</Text>
+          <Pressable onPress={handleLogout}>
+            <Text style={styles.settings}>Log out</Text>
           </Pressable>
         </View>
 
