@@ -64,8 +64,8 @@ Future development will focus on backend integration, data management, and a rel
 <p align="center">
   <img src="screenshots/auth-welcome.png" width="200" />
   <img src="screenshots/signup.png" width="200" />
-  <img src="screenshots/setup.png" width="200" />
   <img src="screenshots/profile.png" width="200" />
+  <img src="screenshots/setup.png" width="200" />
 </p>
 
 ## Developer
