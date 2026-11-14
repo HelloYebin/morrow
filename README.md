@@ -59,6 +59,20 @@ The project is being developed incrementally, starting with authentication and a
 
 Future development will focus on backend integration, data management, and a reliable user experience.
 
+## Screenshots
+
+### Welcome
+![Welcome Screen](screenshots/auth-welcome.png)
+
+### Sign Up
+![Sign Up Screen](screenshots/signup.png)
+
+### Profile
+![Profile Screen](screenshots/profile.png)
+
+### Set Up
+![Set Up Screen](screenshots/setup.png)
+
 ## Developer
 
 **Yebin Oh**
